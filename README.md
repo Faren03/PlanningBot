@@ -1,38 +1,72 @@
 Interactive Rom-Com Planning Model
-This project implements a romantic comedy (rom-com) story using PDDL (Planning Domain Definition Language) and a planner to model an interactive text-based narrative. The user interacts with the story, influencing the state of the world and progressing toward the goal of starting a romantic relationship.
+
+This project implements a romantic comedy (rom-com) interactive story using PDDL (Planning Domain Definition Language) and a planner to model a text-based narrative. The user interacts with the story, influencing the state of the world and progressing toward the goal of starting a romantic relationship.
 
 Project Overview
-This interactive story features a character, Alex, who tries to build a relationship with Jordan through various actions. The goal of the project is to model the interactions as planning actions and define the initial and goal states using PDDL, allowing multiple unique paths toward the goal.
+
+This interactive story follows Alex, who is trying to build a relationship with Jordan. The goal is to model interactions as planning actions and define the initial and goal states using PDDL. The planner evaluates possible story paths, ensuring multiple unique ways to reach the final goal.
 
 Key Components
-PDDL Model: The story is modeled using PDDL to represent the different actions Alex can take to reach the goal state. Actions include "Send Message," "Compliment Jordan," "Ask for Coffee," and more.
 
-Planner Integration: The project integrates a PDDL planner to evaluate possible actions and determine the sequence of steps to reach the goal state.
+PDDL Model:
 
-Interactive Story Paths: Multiple story paths are supported, allowing different sequences of actions to lead to the same goal state, providing variety in the interactions.
+The story is modeled using PDDL, defining different actions Alex can take (e.g., "Send Message", "Compliment Jordan", "Ask for Coffee", etc.).
+
+Preconditions and effects are included to control the logical flow of the story.
+
+Planner Integration:
+
+Uses Pyperplan (or another compatible PDDL planner) to evaluate the best sequence of actions to reach the goal state.
+
+Interactive Story Paths:
+
+Multiple unique paths to the goal state allow different sequences of actions, making the story dynamic and replayable.
 
 Requirements
+
 Python 3.x
-Pyperplan (or other PDDL-compatible planner)
-Install the required dependencies using:
 
-bash
-Copy code
+Pyperplan (or another PDDL-compatible planner)
+
+Installation
+
+Install dependencies using:
+
 pip install pyperplan
+
 Project Structure
-bash
-Copy code
+
 .
-├── romcom-domain.pddl      # PDDL domain definition for the rom-com story
-├── romcom-problem.pddl     # PDDL problem definition for the story scenario
-├── planner.py              # Python script to run the planner and interact with the user
-└── README.md               # Project documentation
+├── romcom-domain.pddl    
+├── romcom-problem.pddl   
+├── planner.py            
+└── README.md              
+
 How to Use
-Domain and Problem Definition:
 
-The romcom-domain.pddl file defines the available actions (e.g., meeting Jordan, sending messages, complimenting, etc.) and the preconditions/effects of each action.
-The romcom-problem.pddl file defines the initial state (e.g., Alex is shy and not in a relationship with Jordan) and the goal state (e.g., Alex and Jordan are in a relationship).
-Running the Planner:
+1. Define the Domain and Problem
 
-The planner.py file integrates with a PDDL planner (e.g., Pyperplan) to process the domain and problem definitions and find a solution.
-The planner tries to achieve the goal (Alex and Jordan being in a relationship) based on user inputs and available actions.
+romcom-domain.pddl defines available actions (meeting Jordan, sending messages, complimenting, etc.) and their preconditions/effects.
+
+romcom-problem.pddl sets the initial state (e.g., Alex is shy and not in a relationship with Jordan) and the goal state (Alex and Jordan are in a relationship).
+
+2. Running the Planner
+
+Execute the planner script to start the interactive story:
+
+python planner.py
+
+This will:
+
+Load the PDDL domain and problem files.
+
+Start an interactive session, where the user can choose Alex’s actions.
+
+Use the planner to compute story progress, updating the state dynamically.
+
+End when Alex reaches the goal (starting a relationship with Jordan) or fails (e.g., Jordan loses interest).
+
+Example Interaction
+
+
+
